@@ -409,29 +409,25 @@ async def done_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="HTML"
     )
 
-    # 7. Generate Website HTML Snippet (UPDATED TO YOUR REQUIRED FORMAT)
+    # 7. Generate Website HTML Snippet (SINGLE LINE SKELETON FORMAT)
+    # This matches your requirement: <div class="quiz" data-type="paid" data-id="..." data-title="..."></div>
     website_code = (
-        f'<div class="quiz" data-type="paid">\n'
-        f'    <div class="quiz-left">\n'
-        f'      <div class="quiz-title">{session["quiz_title"]} <span class="quiz-badge badge-paid">PAID</span></div>\n'
-        f'      <div class="quiz-info">{len(question_objects)} Questions • {session["timer_min"]} Min</div>\n'
-        f'    </div>\n'
-        f'    <div class="action-area">\n'
-        f'        <a href="full_test.html?id={session["quiz_id"]}" class="start-btn">START</a>\n'
-        f'    </div>\n'
-        f'</div>'
+        f'<div class="quiz" data-type="paid" '
+        f'data-id="{session["quiz_id"]}" '
+        f'data-title="{session["quiz_title"]}"></div>'
     )
-
 
     # ✅ ESCAPE THE HTML CODE SO TELEGRAM SENDS IT AS TEXT
     escaped_code = html.escape(website_code)
 
     # 8. Send the Snippet Message
     await update.message.reply_text(
-        f"📋 <b>Website Code Snippet:</b>\nCopy this to your website:\n\n"
+        f"📋 <b>Website Code Snippet:</b>\n\n"
         f"<pre><code class='language-html'>{escaped_code}</code></pre>",
         parse_mode="HTML"
     )
+
+    
 
     reset_session(uid)
 
