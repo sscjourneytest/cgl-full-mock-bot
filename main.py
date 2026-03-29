@@ -159,8 +159,6 @@ def parse_mcq(mcq, idx, session):
     return {
         "answer": str("abcd".index(answer) + 1),
         "correct_score": session["correct_score"],
-        "deleted": "0",
-        "difficulty_level": "0",
         "id": str(50000 + idx),
         "negative_score": session["negative_score"],
 
@@ -183,14 +181,10 @@ def parse_mcq(mcq, idx, session):
         "question_image": "",
         "quiz_id": session["quiz_id"],
 
-        "solution_heading": "",
-        "solution_image": "",
         "solution_text": {
             "en": esc("<br>".join(sol_en)),
             "hi": esc("<br>".join(sol_hi))
-        },
-        "solution_video": "",
-        "sortingparam": "0.00"
+        }
     }
 
 
