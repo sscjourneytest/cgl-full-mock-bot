@@ -181,6 +181,7 @@ def parse_mcq(mcq, idx, session):
         "question_image": "",
         "quiz_id": session["quiz_id"],
 
+        "solution_image": "",
         "solution_text": {
             "en": esc("<br>".join(sol_en)),
             "hi": esc("<br>".join(sol_hi))
